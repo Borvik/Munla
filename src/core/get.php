@@ -141,7 +141,7 @@ class get extends cache{
      * @return controller|null An instance of the controller, or null if not found.
      */
     public static function cache_controller($name){
-    	if( preg_match('/[^a-zA-Z0-9_]/', $name) !== false ) return null;
+    	if( preg_match('/[^a-zA-Z0-9_]/', $name) ) $name = 'index';
         $controller = self::mvc_class($name, 'Controller', 'controller');
         if( isset($controller) ) return new secureClass($controller);
         return null;
